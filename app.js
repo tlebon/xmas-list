@@ -1,22 +1,25 @@
 /*
 / GENERAL ANIMAL FUNCTION 
 */
-function Animal(weight, height, diet){
-	this.weight = weight;
-	this.height = height;
-	this.diet = diet;
+class Animal {
+	constructor(weight, height, diet) {
+		this.weight = weight;
+		this.height = height;
+		this.diet = diet;
+	}
 }
 
 // Create Dino Constructor
-function Dinosaur({ species, weight, height, diet, where, when, fact }) {
-	this.species = species;
-	this.weight = weight;
-	this.height = height;
-	this.diet = diet;
-	this.where = where;
-	this.when = when;
-	this.fact = fact;
+class Dinosaure extends Animal {
+	constructor({ species, weight, height, diet, where, when, fact }) {
+		super(weight, height, diet);
+		this.species = species;
+		this.where = where;
+		this.when = when;
+		this.fact = fact;
+	}
 }
+// Dinosaur.prototype = Animal;
 
 // Create Dino Objects
 let getDinos = async () => {
@@ -28,12 +31,12 @@ let getDinos = async () => {
 };
 
 // Create Human Object
-function Human(name, weight, feet, inches, diet) {
-	this.name = name;
-	this.weight = weight;
-	this.feet = feet;
-	this.inches = inches;
-	this.diet = diet;
+class Human extends Animal {
+	constructor(name, weight, feet, inches, diet) {
+		super(weight, height, diet);
+		this.name = name;
+		this.weight = feet * 12 + inches;
+	}
 }
 // Use IIFE to get human data from form
 let human;
@@ -106,7 +109,6 @@ function getRandomFact(human, dino) {
 
 // Generate Tiles for each Dino in Array
 function tile(dino) {
-
 	function createInfo(dino) {
 		const htmlTraits = [];
 		const { species, fact, ...traits } = dino;
