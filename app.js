@@ -10,7 +10,7 @@ class Animal {
 }
 
 // Create Dino Constructor
-class Dinosaure extends Animal {
+class Dinosaur extends Animal {
 	constructor({ species, weight, height, diet, where, when, fact }) {
 		super(weight, height, diet);
 		this.species = species;
@@ -19,23 +19,21 @@ class Dinosaure extends Animal {
 		this.fact = fact;
 	}
 }
-// Dinosaur.prototype = Animal;
 
 // Create Dino Objects
-let getDinos = async () => {
+let dinos = [];
+let getDinos = (async () => {
 	let response = await fetch("./dino.json");
-	let dinojson = await response
+	dinos = await response
 		.json()
 		.then((data) => (dinos = data.Dinos.map((dino) => new Dinosaur(dino))));
-	return dinojson;
-};
-
+})();
 // Create Human Object
 class Human extends Animal {
 	constructor(name, weight, feet, inches, diet) {
-		super(weight, height, diet);
+		const height = feet * 12 + Number(inches);
+		super(Number(weight), height, diet);
 		this.name = name;
-		this.weight = feet * 12 + inches;
 	}
 }
 // Use IIFE to get human data from form
@@ -46,19 +44,20 @@ function pullForm() {
 	let humanEl = humanAttr.map((stat) => {
 		return document.getElementById(stat).value;
 	});
-
 	human = new Human(...humanEl);
 }
-const btn = document.getElementById("btn");
-btn.addEventListener("click", pullForm);
 
+const btn = document.getElementById("btn");
+btn.addEventListener("mousedown", pullForm);
+
+//should the dino compare methods be abstracted to 1 function?
 // Create Dino Compare Method 1
 // NOTE: Weight in JSON file is in lbs, height in inches.
 function heightCompare(human, dino) {
-	const humHeight = human.feet * 12 + human.inches;
-	const [height, species] = dino;
+	const humHeight = human.height;
+	const { height, species } = dino;
 	const comparison = height - humHeight;
-
+	console.log(height, humHeight);
 	switch (humHeight < height) {
 		case true:
 			return `Wow, you are only ${comparison} inches shorter than a ${species}!`;
@@ -70,14 +69,14 @@ function heightCompare(human, dino) {
 // NOTE: Weight in JSON file is in lbs, height in inches.
 function weightCompare(human, dino) {
 	const humWeight = human.weight;
-	const [weight, species] = dino;
+	const { weight, species } = dino;
 	const comparison = weight - humWeight;
-
+	console.log(weight, humWeight);
 	switch (humWeight < weight) {
 		case true:
 			return `Wow, you are ${comparison} pounds lighter than a ${species}! Do you do crossfit or something?`;
 		case false:
-			return `Wait, that can't be right- you are ${-comparison} lbs heavier than a ${species}! Maybe lay off the burgers for a while`;
+			return `Wait, that can't be right- you are ${-comparison} lbs heavier than a ${species}!`;
 	}
 }
 
@@ -85,8 +84,8 @@ function weightCompare(human, dino) {
 // NOTE: Weight in JSON file is in lbs, height in inches.
 function dietCompare(human, dino) {
 	const humDiet = human.diet;
-	const [diet, species] = dino;
-
+	const { diet, species } = dino;
+	console.log(diet, humDiet);
 	switch (true) {
 		case humDiet == diet:
 			return `You are a ${humDiet}? Same as a ${species}`;
@@ -97,42 +96,56 @@ function dietCompare(human, dino) {
 	}
 }
 function getRandomFact(human, dino) {
-	let randNum = Math.floor(Math.random() * 4);
+	let randNum = Math.floor(Math.random() * 6);
+
+	function createInfo(dino) {
+		const htmlTraits = [];
+		const { fact, ...traits } = dino;
+		for (let trait in traits) {
+			htmlTraits.push(`${trait}: ${traits[trait]}`);
+		}
+		return htmlTraits;
+	}
+
 	const compares = [
 		dietCompare(human, dino),
 		weightCompare(human, dino),
 		heightCompare(human, dino),
 		dino.fact,
+		...createInfo(dino),
 	];
+	// console.log(compares);
 	return compares[randNum];
 }
 
 // Generate Tiles for each Dino in Array
-function tile(dino) {
-	function createInfo(dino) {
-		const htmlTraits = [];
-		const { species, fact, ...traits } = dino;
-		for (let trait in traits) {
-			htmlTraits.push(`<p>${trait}: ${traits[trait]}</p>`);
-		}
-		return htmlTraits;
-	}
 
-	return `<div id="grid-item">
+// console.log(dinos);
+function tile(dino) {
+	const { species } = dino;
+	return `<div class="grid-item">
 	<h3>${species}</h3>
-	<img src='images/${species.toLowerCase()}'></img>	
-${createInfo(dino).join("</br>")}
-</br>${getRandomFact(human, dino)}
+	<img src='/images/${species.toLowerCase()}.png'></img>	
+
+<p>${getRandomFact(human, dino)} </p>
 	</div>`;
 }
-// Add tiles to DOM
 
-if (dinos.length) {
-	const grid = document.getElementById("grid");
-	dinos.forEach((dino) => {
-		grid.innerHTML += tile(dino);
-	});
+// Add tiles to DOM
+function humanTile(human) {
+	return `<div class="grid-item">
+	<h3>${human.name}</h3>
+	<img src='/images/human.png'></img>	
+	</div>`;
 }
 // Remove form from screen
-
 // On button click, prepare and display infographic
+const form = document.getElementById("dino-compare");
+btn.addEventListener("mousedown", makeGrid);
+function makeGrid() {
+	const grid = document.getElementById("grid");
+	form.className = "inactive";
+	let tiles = dinos.map((dino) => tile(dino));
+	tiles.splice(4, 0, humanTile(human));
+	tiles.forEach((tile) => (grid.innerHTML += tile));
+}
