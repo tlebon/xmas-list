@@ -1,19 +1,20 @@
-/*
-/ GENERAL ANIMAL FUNCTION 
+/** 
+/ Animal Base Class 
 */
 class Animal {
-	constructor(weight, height, diet) {
+	constructor(weight, height, diet, species) {
 		this.weight = weight;
 		this.height = height;
 		this.diet = diet;
+		this.species = species;
 	}
 }
 
 // Create Dino Constructor
 class Dinosaur extends Animal {
 	constructor({ species, weight, height, diet, where, when, fact }) {
-		super(weight, height, diet);
-		this.species = species;
+		super(weight, height, diet, species);
+
 		this.where = where;
 		this.when = when;
 		this.fact = fact;
@@ -32,7 +33,8 @@ let getDinos = (async () => {
 class Human extends Animal {
 	constructor(name, weight, feet, inches, diet) {
 		const height = feet * 12 + Number(inches);
-		super(Number(weight), height, diet);
+		const species = 'human';
+		super(Number(weight), height, diet, species);
 		this.name = name;
 	}
 }
@@ -57,7 +59,7 @@ function heightCompare(human, dino) {
 	const humHeight = human.height;
 	const { height, species } = dino;
 	const comparison = height - humHeight;
-	console.log(height, humHeight);
+
 	switch (humHeight < height) {
 		case true:
 			return `Wow, you are only ${comparison} inches shorter than a ${species}!`;
@@ -71,7 +73,7 @@ function weightCompare(human, dino) {
 	const humWeight = human.weight;
 	const { weight, species } = dino;
 	const comparison = weight - humWeight;
-	console.log(weight, humWeight);
+
 	switch (humWeight < weight) {
 		case true:
 			return `Wow, you are ${comparison} pounds lighter than a ${species}! Do you do crossfit or something?`;
@@ -85,7 +87,7 @@ function weightCompare(human, dino) {
 function dietCompare(human, dino) {
 	const humDiet = human.diet.toLowerCase();
 	const { diet, species } = dino;
-	console.log(diet, humDiet);
+
 	switch (true) {
 		case humDiet == diet:
 			return `You are a ${humDiet}? Same as a ${species}`;
@@ -101,8 +103,8 @@ function compareKey(key, human, dino) {
 	}
 }
 function getRandomFact(human, dino) {
-	if(dino.species =="Pigeon"){
-		return dino.fact; 
+	if (dino.species == 'Pigeon') {
+		return dino.fact;
 	}
 	let randNum = Math.floor(Math.random() * 6);
 
@@ -122,29 +124,23 @@ function getRandomFact(human, dino) {
 		dino.fact,
 		...createInfo(dino),
 	];
-	// console.log(compares);
+
 	return compares[randNum];
 }
 
 // Generate Tiles for each Dino in Array
 
-function tile(dino) {
-	const { species } = dino;
+function makeTile(animal) {
+	const { species } = animal;
+	const isHuman = species == 'human';
 	return `<div class="grid-item">
-	<h3>${species}</h3>
+	<h3>${isHuman ? animal.name : species}</h3>
 	<img src='/images/${species.toLowerCase()}.png'></img>	
-
-<p>${getRandomFact(human, dino)} </p>
+${isHuman ? '' : `<p>${getRandomFact(human, animal)} </p>`}
 	</div>`;
 }
 
 // Add tiles to DOM
-function humanTile(human) {
-	return `<div class="grid-item">
-	<h3>${human.name}</h3>
-	<img src='/images/human.png'></img>	
-	</div>`;
-}
 // Remove form from screen
 // On button click, prepare and display infographic
 const form = document.getElementById('dino-compare');
@@ -155,8 +151,8 @@ btn.addEventListener('mousedown', makeGrid);
 function makeGrid() {
 	form.className = 'inactive';
 	restart.className = '';
-	let tiles = dinos.map((dino) => tile(dino));
-	tiles.splice(4, 0, humanTile(human));
+	let tiles = dinos.map((dino) => makeTile(dino));
+	tiles.splice(4, 0, makeTile(human));
 	tiles.forEach((tile) => (grid.innerHTML += tile));
 }
 // Clear the page, show the original content/ randomize the dino order
