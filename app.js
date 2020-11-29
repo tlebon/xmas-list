@@ -23,7 +23,7 @@ class Dinosaur extends Animal {
 // Create Dino Objects
 let dinos = [];
 let getDinos = (async () => {
-	let response = await fetch("./dino.json");
+	let response = await fetch('./dino.json');
 	dinos = await response
 		.json()
 		.then((data) => (dinos = data.Dinos.map((dino) => new Dinosaur(dino))));
@@ -40,15 +40,15 @@ class Human extends Animal {
 let human;
 
 function pullForm() {
-	const humanAttr = ["name", "weight", "feet", "inches", "diet"];
+	const humanAttr = ['name', 'weight', 'feet', 'inches', 'diet'];
 	let humanEl = humanAttr.map((stat) => {
 		return document.getElementById(stat).value;
 	});
 	human = new Human(...humanEl);
 }
 
-const btn = document.getElementById("btn");
-btn.addEventListener("mousedown", pullForm);
+const btn = document.getElementById('btn');
+btn.addEventListener('mousedown', pullForm);
 
 //should the dino compare methods be abstracted to 1 function?
 // Create Dino Compare Method 1
@@ -83,19 +83,27 @@ function weightCompare(human, dino) {
 // Create Dino Compare Method 3
 // NOTE: Weight in JSON file is in lbs, height in inches.
 function dietCompare(human, dino) {
-	const humDiet = human.diet;
+	const humDiet = human.diet.toLowerCase();
 	const { diet, species } = dino;
 	console.log(diet, humDiet);
 	switch (true) {
 		case humDiet == diet:
 			return `You are a ${humDiet}? Same as a ${species}`;
-		case humDiet == "Omnivor":
+		case humDiet == 'Omnivor':
 			return `So you eat it all? Thats different from a ${species}, they were only ${diet}s`;
-		case humDiet == "Herbivor" || humDiet == "Carnivor":
+		case humDiet == 'Herbivor' || humDiet == 'Carnivor':
 			return `You are a ${humDiet}? The ${species} was a ${diet}`;
 	}
 }
+function compareKey(key, human, dino) {
+	if (human[key] == dino[key]) {
+		return `You have the same ${key} as a ${dino.species}`;
+	}
+}
 function getRandomFact(human, dino) {
+	if(dino.species =="Pigeon"){
+		return dino.fact; 
+	}
 	let randNum = Math.floor(Math.random() * 6);
 
 	function createInfo(dino) {
@@ -120,7 +128,6 @@ function getRandomFact(human, dino) {
 
 // Generate Tiles for each Dino in Array
 
-// console.log(dinos);
 function tile(dino) {
 	const { species } = dino;
 	return `<div class="grid-item">
@@ -140,12 +147,21 @@ function humanTile(human) {
 }
 // Remove form from screen
 // On button click, prepare and display infographic
-const form = document.getElementById("dino-compare");
-btn.addEventListener("mousedown", makeGrid);
+const form = document.getElementById('dino-compare');
+const restart = document.getElementById('restart');
+const grid = document.getElementById('grid');
+
+btn.addEventListener('mousedown', makeGrid);
 function makeGrid() {
-	const grid = document.getElementById("grid");
-	form.className = "inactive";
+	form.className = 'inactive';
+	restart.className = '';
 	let tiles = dinos.map((dino) => tile(dino));
 	tiles.splice(4, 0, humanTile(human));
 	tiles.forEach((tile) => (grid.innerHTML += tile));
 }
+// Clear the page, show the original content/ randomize the dino order
+restart.addEventListener('click', function () {
+	form.className = '';
+	restart.className = 'inactive';
+	grid.innerHTML = '';
+});
