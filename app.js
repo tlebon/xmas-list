@@ -70,6 +70,9 @@ btn.addEventListener('mousedown', pullForm);
 /**
  * CompareKey will take a given key
  * and compare the two methods between a dino and a human, if applicable.
+ * Created to abstract all of the methods into 1, but since this is not in the criteria it is currently here
+ * to extend the project into comparing other fields (If i decided to do that.)
+ *
  * @param {string} key
  * @param {Human} human
  * @param {Dinosaur} dino
@@ -95,6 +98,45 @@ function compareKey(key, human, dino) {
 		: `You have a ${human[key]} ${key}. ${dino.species} is a ${dino[key]}`;
 }
 
+// Create Dino Compare Method 1
+// NOTE: Weight in JSON file is in lbs, height in inches.
+function heightCompare(human, dino) {
+	const humHeight = human.height;
+	const { height, species } = dino;
+	const comparison = height - humHeight;
+
+	switch (humHeight < height) {
+		case true:
+			return `Wow, you are only ${comparison} inches shorter than a ${species}!`;
+		case false:
+			return `Wait, that can't be right- you are ${-comparison} inches taller than a ${species}!`;
+	}
+}
+// Create Dino Compare Method 2
+// NOTE: Weight in JSON file is in lbs, height in inches.
+function weightCompare(human, dino) {
+	const humWeight = human.weight;
+	const { weight, species } = dino;
+	const comparison = weight - humWeight;
+
+	switch (humWeight < weight) {
+		case true:
+			return `Wow, you are ${comparison} pounds lighter than a ${species}! Do you do crossfit or something?`;
+		case false:
+			return `Wait, that can't be right- you are ${-comparison} pounds heavier than a ${species}!`;
+	}
+}
+
+// Create Dino Compare Method 3
+function dietCompare(human, dino) {
+	const humDiet = human.diet.toLowerCase();
+	const { diet, species } = dino;
+
+	return humDiet == diet
+		? `You have the same diet as a ${species}, your both ${humDiet}s`
+		: `You have a ${humDiet} diet. ${species} is a ${diet}`;
+}
+
 function getRandomFact(human, dino) {
 	if (dino.species == 'Pigeon') {
 		return dino.fact;
@@ -114,15 +156,15 @@ function getRandomFact(human, dino) {
 		return htmlTraits;
 	}
 
-	const compares = [
+	const randomFacts = [
 		dino.fact,
-		...['diet', 'weight', 'height'].map((term) =>
-			compareKey(term, human, dino)
-		),
+		heightCompare(human, dino),
+		weightCompare(human, dino),
+		dietCompare(human, dino),
 		...createInfo(dino),
 	];
 
-	return compares[randNum];
+	return randomFacts[randNum];
 }
 
 // Generate Tiles for each Dino in Array
@@ -144,8 +186,7 @@ const form = document.getElementById('dino-compare');
 const restart = document.getElementById('restart');
 const grid = document.getElementById('grid');
 
-btn.addEventListener('mousedown', makeGrid);
-function makeGrid() {
+btn.addEventListener('mousedown', function makeGrid() {
 	form.className = 'inactive';
 	restart.className = '';
 	let tiles = dinos
@@ -153,9 +194,10 @@ function makeGrid() {
 		.sort(() => 0.5 - Math.random()); // put the dino tiles in a random (ish) order
 	tiles.splice(4, 0, makeTile(human));
 	tiles.forEach((tile) => (grid.innerHTML += tile));
-}
+});
+
 // Clear the page, show the original form
-restart.addEventListener('click', function () {
+restart.addEventListener('click', function restartPage() {
 	form.className = '';
 	restart.className = 'inactive';
 	grid.innerHTML = '';
