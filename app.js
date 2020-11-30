@@ -3,9 +3,11 @@ const unitTable = {
 	height: 'inches',
 };
 
-/** 
-/ Animal Base Class 
-*/
+/**
+ * Animal Base Class
+ * creates a shared base class for both dino and human.
+ * @constructor
+ */
 class Animal {
 	constructor(weight, height, diet, species) {
 		this.weight = weight;
@@ -15,7 +17,10 @@ class Animal {
 	}
 }
 
-// Create Dino Constructor
+/**
+ * Dinosaur
+ * @constructor
+ */
 class Dinosaur extends Animal {
 	constructor({ species, weight, height, diet, where, when, fact }) {
 		super(weight, height, diet, species);
@@ -39,7 +44,10 @@ let getDinos = (async () => {
 		.then((data) => (dinos = data.Dinos.map((dino) => new Dinosaur(dino))));
 })();
 
-// Create Human Object
+/**
+ * Human
+ * @constructor
+ */
 class Human extends Animal {
 	constructor(name, weight, feet, inches, diet) {
 		const height = feet * 12 + Number(inches);
@@ -47,7 +55,6 @@ class Human extends Animal {
 		this.name = name;
 	}
 }
-// Use IIFE to get human data from form
 
 let human;
 /**
@@ -66,7 +73,6 @@ function pullForm() {
 const btn = document.getElementById('btn');
 btn.addEventListener('mousedown', pullForm);
 
-//I abstracted the dino compare methods to 1 function
 /**
  * CompareKey will take a given key
  * and compare the two methods between a dino and a human, if applicable.
@@ -99,7 +105,6 @@ function compareKey(key, human, dino) {
 }
 
 // Create Dino Compare Method 1
-// NOTE: Weight in JSON file is in lbs, height in inches.
 function heightCompare(human, dino) {
 	const humHeight = human.height;
 	const { height, species } = dino;
@@ -113,7 +118,6 @@ function heightCompare(human, dino) {
 	}
 }
 // Create Dino Compare Method 2
-// NOTE: Weight in JSON file is in lbs, height in inches.
 function weightCompare(human, dino) {
 	const humWeight = human.weight;
 	const { weight, species } = dino;
@@ -137,6 +141,13 @@ function dietCompare(human, dino) {
 		: `You have a ${humDiet} diet. ${species} is a ${diet}`;
 }
 
+/**
+ * getRandomFact is used when generating the dino tiles.
+ * it will format the dino info and add it to a an array of the other facts.
+ * this array is then chosen from randomly
+ * @param {Human} human
+ * @param {Dinosaur} dino
+ */
 function getRandomFact(human, dino) {
 	if (dino.species == 'Pigeon') {
 		return dino.fact;
@@ -167,7 +178,11 @@ function getRandomFact(human, dino) {
 	return randomFacts[randNum];
 }
 
-// Generate Tiles for each Dino in Array
+/**
+ * makes a html tile for the page.
+ * @param {Dinosaur | Human} animal
+ * @returns a formatting html tile depending on which animal type is entered
+ */
 
 function makeTile(animal) {
 	const { species } = animal;
