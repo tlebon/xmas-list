@@ -1,0 +1,68 @@
+{
+    "Gifts": [
+        {
+            "name": "Dog Treat Dispenser",
+            "price": "€18.18",
+            "link": "https://www.amazon.de/-/en/gp/product/B0711Y9XTF/ref=ox_sc_saved_title_2?smid=A3JWKAKR8XB7XF&th=1",
+            "type": "Pet",
+            "info": "A nice toy for Oskar",
+            "image":"https://m.media-amazon.com/images/I/81Fyb8B0YtL._AC_AA180_.jpg"
+        },
+        {
+            "name": "Non-Stick Pan 25cm",
+            "price": "€38.82",
+            "link": "https://www.amazon.de/-/en/gp/product/B076JKWP7H/ref=ox_sc_saved_title_3?smid=A3JWKAKR8XB7XF&psc=1",
+            "type": "Kitchen",
+            "info": "A nice new quality non-stick pan!",
+            "image": "https://m.media-amazon.com/images/I/71gkseGEAFL._AC_AA180_.jpg"
+        },
+        {
+            "name": "Earthsea",
+            "price": "€12.99",
+            "link": "https://www.amazon.de/-/en/gp/product/0241956870/ref=ox_sc_saved_title_7?smid=A3JWKAKR8XB7XF&psc=1",
+            "type": "Books",
+            "info": "A fantasy series I'm interested in digging into.",
+            "image":"https://m.media-amazon.com/images/I/81wHjXPYzpL._AC_AA180_.jpg"
+        },
+        {
+            "name": "Science Cartoons",
+            "price": "€11.99",
+            "link": "https://www.amazon.de/-/en/gp/product/1786898055/ref=ox_sc_saved_title_5?smid=A3JWKAKR8XB7XF&psc=1",
+            "type": "Books",
+            "info": "Science-based cartoons for me to enjoy and feel smart for understanding.",
+            "image": "https://m.media-amazon.com/images/I/818xoEZSneL._AC_AA180_.jpg"
+        },
+        {
+            "name": "The original Powerball",
+            "price": "€19.90",
+            "link": "https://www.amazon.de/-/en/gp/product/B000VABQHK/ref=ox_sc_saved_title_4?smid=ABWA4KJ73TS36&psc=1",
+            "type": "Exercise",
+            "info": "A nice little warmup/rehab option for climbing",
+            "image":"https://m.media-amazon.com/images/I/61EGW2xVQZL._AC_AA180_.jpg"
+        },
+        {
+            "name": "The original Powerball",
+            "price": "€19.90",
+            "link": "https://www.amazon.de/-/en/gp/product/B000VABQHK/ref=ox_sc_saved_title_4?smid=ABWA4KJ73TS36&psc=1",
+            "type": "Kitchen",
+            "info": "A nice little warmup/rehab option for climbing",
+            "image":"https://m.media-amazon.com/images/I/61EGW2xVQZL._AC_AA180_.jpg"
+        },
+        {
+            "name": "The original Powerball",
+            "price": "€19.90",
+            "link": "https://www.amazon.de/-/en/gp/product/B000VABQHK/ref=ox_sc_saved_title_4?smid=ABWA4KJ73TS36&psc=1",
+            "type": "Kitchen",
+            "info": "A nice little warmup/rehab option for climbing",
+            "image":"https://m.media-amazon.com/images/I/61EGW2xVQZL._AC_AA180_.jpg"
+        },
+        {
+            "name": "The original Powerball",
+            "price": "€19.90",
+            "link": "https://www.amazon.de/-/en/gp/product/B000VABQHK/ref=ox_sc_saved_title_4?smid=ABWA4KJ73TS36&psc=1",
+            "type": "Kitchen",
+            "info": "A nice little warmup/rehab option for climbing",
+            "image":"https://m.media-amazon.com/images/I/61EGW2xVQZL._AC_AA180_.jpg"
+        }
+    ]
+}
