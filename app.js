@@ -49,7 +49,7 @@ let tim = new Human(
 	'Tim & Oskar',
 	'Wish you a Merry Christmas',
 	'human',
-	'/images/IMG_4828.JPG'
+	'images/IMG_4828.JPG'
 );
 /**
  * On form submit,
