@@ -41,28 +41,28 @@
             "image":"https://m.media-amazon.com/images/I/61EGW2xVQZL._AC_AA180_.jpg"
         },
         {
-            "name": "The original Powerball",
-            "price": "€19.90",
-            "link": "https://www.amazon.de/-/en/gp/product/B000VABQHK/ref=ox_sc_saved_title_4?smid=ABWA4KJ73TS36&psc=1",
-            "type": "Kitchen",
-            "info": "A nice little warmup/rehab option for climbing",
-            "image":"https://m.media-amazon.com/images/I/61EGW2xVQZL._AC_AA180_.jpg"
+            "name": "New Lamp Shade",
+            "price": "€13.99",
+            "link": "https://www.amazon.de/gp/product/B01MREHZ11/ref=ox_sc_saved_title_1?smid=A2N58YCCQNSUNR&psc=1",
+            "type": "Misc",
+            "info": "I need a new lampshade :D",
+            "image":"https://m.media-amazon.com/images/I/51F5LOi0f0L._AC_AA360_.jpg"
         },
         {
-            "name": "The original Powerball",
-            "price": "€19.90",
-            "link": "https://www.amazon.de/-/en/gp/product/B000VABQHK/ref=ox_sc_saved_title_4?smid=ABWA4KJ73TS36&psc=1",
-            "type": "Kitchen",
-            "info": "A nice little warmup/rehab option for climbing",
-            "image":"https://m.media-amazon.com/images/I/61EGW2xVQZL._AC_AA180_.jpg"
+            "name": "Trentemøller Vinyl",
+            "price": "€19.49",
+            "link": "https://www.amazon.de/-/en/Trentem%C3%B6ller/dp/B07B5Y6V5F",
+            "type": "Music",
+            "info": "Some record that I think I would enjoy",
+            "image":"https://m.media-amazon.com/images/I/519dijWFpaL._AC_AA360_.jpg"
         },
         {
-            "name": "The original Powerball",
-            "price": "€19.90",
-            "link": "https://www.amazon.de/-/en/gp/product/B000VABQHK/ref=ox_sc_saved_title_4?smid=ABWA4KJ73TS36&psc=1",
-            "type": "Kitchen",
-            "info": "A nice little warmup/rehab option for climbing",
-            "image":"https://m.media-amazon.com/images/I/61EGW2xVQZL._AC_AA180_.jpg"
+            "name": "Kiwanuka Vinyl",
+            "price": "€21.44",
+            "link": "https://www.amazon.de/-/en/Michael-Kiwanuka/dp/B07W8ZXB62/",
+            "type": "Music",
+            "info": "Another record that could be a nice option",
+            "image":"https://m.media-amazon.com/images/I/61MTuHbRXsL._AC_AA360_.jpg"
         }
     ]
 }
