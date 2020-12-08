@@ -79,31 +79,20 @@ function makeTile(item) {
 	return `<a href=${isHuman ? '#' : item.link} class="grid-item"><div>
 	<h3>${item.name}</h3>
 	<img src='${item.image}'></img>	
-	<p class ='not-overlay'>${item.info} </p>
+	<p class =${isHuman?'human':'not-overlay'}>${item.info} </p>
 	${isHuman ? '' : `<p class='overlay'> ${item.price}</p>`}
 	</div></a>`;
 }
 
 // Add tiles to DOM
-// Remove form from screen
-// On button click, prepare and display infographic
-// const form = document.getElementById('dino-compare');
-// const restart = document.getElementById('restart');
+
 const grid = document.getElementById('grid');
 
 function makeGrid() {
-	// form.className = 'inactive';
-	// restart.className = '';
+
 	let tiles = gifts
 		.map((gifts) => makeTile(gifts))
 		.sort(() => 0.5 - Math.random()); // put the gift tiles in a random (ish) order
 	tiles.splice(4, 0, makeTile(tim));
 	tiles.forEach((tile) => (grid.innerHTML += tile));
 }
-
-// Clear the page, show the original form
-// restart.addEventListener('click', function restartPage() {
-// 	form.className = '';
-// 	restart.className = 'inactive';
-// 	grid.innerHTML = '';
-// });
