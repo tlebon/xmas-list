@@ -13,11 +13,10 @@ body {
 
 h1 {
 	margin: 0;
-	font-family: cursive;
+	font-family: "Frijole", cursive;
 	font-size: 3em;
 	font-weight: 400;
-	background: rgb(209,5,5);
-background: linear-gradient(43deg, rgba(209,5,5,1) 41%, rgba(255,255,255,1) 73%);
+	
 }
 
 h2,
