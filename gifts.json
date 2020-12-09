@@ -6,7 +6,7 @@
             "link": "https://www.amazon.de/-/en/gp/product/B0711Y9XTF/ref=ox_sc_saved_title_2?smid=A3JWKAKR8XB7XF&th=1",
             "type": "Pet",
             "info": "A nice toy for Oskar",
-            "image":"https://m.media-amazon.com/images/I/81Fyb8B0YtL._AC_AA180_.jpg"
+            "image": "https://m.media-amazon.com/images/I/81Fyb8B0YtL._AC_AA180_.jpg"
         },
         {
             "name": "Non-Stick Pan 25cm",
@@ -22,7 +22,7 @@
             "link": "https://www.amazon.de/-/en/gp/product/0241956870/ref=ox_sc_saved_title_7?smid=A3JWKAKR8XB7XF&psc=1",
             "type": "Books",
             "info": "A fantasy series I'm interested in digging into.",
-            "image":"https://m.media-amazon.com/images/I/81wHjXPYzpL._AC_AA180_.jpg"
+            "image": "https://m.media-amazon.com/images/I/81wHjXPYzpL._AC_AA180_.jpg"
         },
         {
             "name": "Science Cartoons",
@@ -38,7 +38,7 @@
             "link": "https://www.amazon.de/-/en/gp/product/B000VABQHK/ref=ox_sc_saved_title_4?smid=ABWA4KJ73TS36&psc=1",
             "type": "Exercise",
             "info": "A nice little warmup/rehab option for climbing",
-            "image":"https://m.media-amazon.com/images/I/61EGW2xVQZL._AC_AA180_.jpg"
+            "image": "https://m.media-amazon.com/images/I/61EGW2xVQZL._AC_AA180_.jpg"
         },
         {
             "name": "New Lamp Shade",
@@ -46,7 +46,7 @@
             "link": "https://www.amazon.de/gp/product/B01MREHZ11/ref=ox_sc_saved_title_1?smid=A2N58YCCQNSUNR&psc=1",
             "type": "Misc",
             "info": "I need a new lampshade :D",
-            "image":"https://m.media-amazon.com/images/I/51F5LOi0f0L._AC_AA360_.jpg"
+            "image": "https://m.media-amazon.com/images/I/51F5LOi0f0L._AC_AA360_.jpg"
         },
         {
             "name": "Trentemøller Vinyl",
@@ -54,7 +54,7 @@
             "link": "https://www.amazon.de/-/en/Trentem%C3%B6ller/dp/B07B5Y6V5F",
             "type": "Music",
             "info": "Some record that I think I would enjoy",
-            "image":"https://m.media-amazon.com/images/I/519dijWFpaL._AC_AA360_.jpg"
+            "image": "https://m.media-amazon.com/images/I/519dijWFpaL._AC_AA360_.jpg"
         },
         {
             "name": "Kiwanuka Vinyl",
@@ -62,7 +62,23 @@
             "link": "https://www.amazon.de/-/en/Michael-Kiwanuka/dp/B07W8ZXB62/",
             "type": "Music",
             "info": "Another record that could be a nice option",
-            "image":"https://m.media-amazon.com/images/I/61MTuHbRXsL._AC_AA360_.jpg"
+            "image": "https://m.media-amazon.com/images/I/61MTuHbRXsL._AC_AA360_.jpg"
+        },
+        {
+            "name": "Three-Body Problem",
+            "price": "€8.78",
+            "link": "https://www.amazon.de/-/en/gp/product/178497157X/ref=ox_sc_act_title_2?smid=A3JWKAKR8XB7XF&psc=1",
+            "type": "Books",
+            "info": "A Sci-Fi I've heard is quite good",
+            "image": "https://m.media-amazon.com/images/I/51FwnpsN1yL._AC_AA360_.jpg"
+        },
+        {
+            "name": "Little, Big",
+            "price": "€13.10",
+            "link": "https://www.amazon.de/-/en/gp/product/1473205476/ref=ox_sc_act_title_1?smid=A3JWKAKR8XB7XF&psc=1",
+            "type": "Books",
+            "info": "A Fantasy book that sounds marvellous",
+            "image": "https://m.media-amazon.com/images/I/715gfZGYzuL._AC_AA360_.jpg"
         }
     ]
 }

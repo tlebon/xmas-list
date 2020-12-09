@@ -92,7 +92,8 @@ function makeGrid() {
 
 	let tiles = gifts
 		.map((gifts) => makeTile(gifts))
-		.sort(() => 0.5 - Math.random()); // put the gift tiles in a random (ish) order
+		.sort(() => 0.5 - Math.random())
+		.filter((item, index)=>index<8); // put the gift tiles in a random (ish) order
 	tiles.splice(4, 0, makeTile(tim));
 	tiles.forEach((tile) => (grid.innerHTML += tile));
 }
