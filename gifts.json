@@ -79,6 +79,14 @@
             "type": "Books",
             "info": "A Fantasy book that sounds marvellous",
             "image": "https://m.media-amazon.com/images/I/715gfZGYzuL._AC_AA360_.jpg"
+        },
+        {
+            "name": "Koze Vinyl",
+            "price": "€16.99",
+            "link": "https://www.amazon.de/gp/product/B00B446UD2/ref=ox_sc_saved_title_1?smid=A3JWKAKR8XB7XF&psc=1",
+            "type": "Music",
+            "info": "One of my favorite records of the last several years",
+            "image": "https://m.media-amazon.com/images/I/51RspRB1eHL._AC_AA360_.jpg"
         }
     ]
 }
